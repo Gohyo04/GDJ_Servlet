@@ -23,7 +23,7 @@ public class DBConnector {
 			// 2. DB연결 (con = 연결못하면 null)
 			Connection con = DriverManager.getConnection(url, user, password);
 			
-			// 3. Sql문 생성 ( ; 생략 )
+			// 3. Sql(query)문 생성 ( ; 생략 )
 			String sql = "SELECT * FROM REGIONS";
 			
 			// 4. SQL문 미리 전송
