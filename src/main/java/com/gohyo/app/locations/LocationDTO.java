@@ -7,6 +7,7 @@ public class LocationDTO {
 	private String city;
 	private String state_province;
 	private String country_id;
+	
 	public int getLocation_id() {
 		return location_id;
 	}
