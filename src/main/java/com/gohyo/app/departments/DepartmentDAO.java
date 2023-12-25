@@ -27,6 +27,7 @@ public class DepartmentDAO {
 			ddto.setManager_id(rs.getInt("MANAGER_ID"));
 			ddto.setLocation_id(rs.getInt("LOCATION_ID"));
 		}
+		DBConnector.disConnect(rs, ps, con);
 		return ddto; 
 	}
 	
