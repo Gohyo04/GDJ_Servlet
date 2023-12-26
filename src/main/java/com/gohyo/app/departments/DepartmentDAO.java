@@ -69,6 +69,7 @@ public class DepartmentDAO {
 		ps.setInt(4, ddto.getLocation_id());
 		
 		int result = ps.executeUpdate();
+		DBConnector.disConnect(ps, con);
 		return result;
 	}
 	

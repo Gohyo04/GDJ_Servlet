@@ -9,7 +9,7 @@ import com.gohyo.app.util.DBConnector;
 
 public class CountryDAO {
 	
-	// 하나씩 가져오기
+	// 하나씩 가져오기 (select)
 	public CountryDTO getCountry(CountryDTO countryDTO) throws Exception{
 		Connection con = DBConnector.getConnector();
 		String sql = "SELECT * FROM COUNTRIES WHERE COUNTRY_ID = ?";
@@ -31,7 +31,7 @@ public class CountryDAO {
 		return cdto;
 	}
 	
-	// 여러개 가져오기
+	// 여러개 가져오기 (select)
 	public ArrayList<CountryDTO> getList() throws Exception{
 		Connection con = DBConnector.getConnector();
 		String sql = "SELECT * FROM COUNTRIES";
@@ -49,5 +49,35 @@ public class CountryDAO {
 		}
 		DBConnector.disConnect(rs, ps, con);
 		return cdtos;
+	}
+	
+	// 추가하기 ( insert )
+	public int add(CountryDTO cdto) throws Exception{
+		Connection con = DBConnector.getConnector();
+		String sql = "INSERT INTO COUNTRIES VALUES (?,?,?)";
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, cdto.getCountry_id());
+		ps.setString(2, cdto.getCountry_name());
+		ps.setInt(3, cdto.getRegion_id());
+		
+		int result = ps.executeUpdate();
+		DBConnector.disConnect(ps, con);
+		return result;
+	}
+	
+	// 수정하기 ( update )
+	public int update(CountryDTO cdto) throws Exception{
+		Connection con = DBConnector.getConnector();
+		String sql = "UPDATE COUNTRIES SET COUNTRY_NAME = ?, REGION_ID = ? WHERE COUNTRY_ID = ?";
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, cdto.getCountry_name());
+		ps.setInt(2, cdto.getRegion_id());
+		ps.setString(3, cdto.getCountry_id());
+		
+		int result = ps.executeUpdate();
+		DBConnector.disConnect(ps, con);
+		return result;
 	}
 }
