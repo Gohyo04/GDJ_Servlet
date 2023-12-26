@@ -8,14 +8,26 @@
 	DepartmentDTO ddto = new DepartmentDTO();
 
 	String id = request.getParameter("department_id");
-
-	int a = ddao.getDetail(ddto).getDepartment_id();	
+	ddto.setDepartment_id(Integer.parseInt(id));
 	
+	ddto = ddao.getDetail(ddto);
 	
 	ddto.setDepartment_id(Integer.parseInt(id));
-	ddto.setDepartment_name(request.getParameter("department_name"));
-	ddto.setManager_id(Integer.parseInt(request.getParameter("manager_id")));	
-	ddto.setLocation_id(Integer.parseInt(request.getParameter("location_id")));
+	if(request.getParameter("department_name") != null){
+		ddto.setDepartment_name(request.getParameter("department_name"));		
+	}else{
+		ddto.setDepartment_name(ddto.getDepartment_name());
+	}
+	if(request.getParameter("manager_id") != null){
+		ddto.setManager_id(Integer.parseInt(request.getParameter("manager_id")));	
+	}else{
+		ddto.setManager_id(ddto.getManager_id());
+	}
+	if(request.getParameter("location_id") != null){
+		ddto.setLocation_id(Integer.parseInt(request.getParameter("location_id")));		
+	}else{
+		ddto.setLocation_id(ddto.getLocation_id());
+	}
 	
 	int result = ddao.update(ddto);
 %>
