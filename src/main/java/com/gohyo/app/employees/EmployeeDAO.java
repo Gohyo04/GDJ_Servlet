@@ -4,10 +4,30 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.gohyo.app.util.DBConnector;
 
 public class EmployeeDAO {
+	
+	// 사원 급여 합계
+	public Map getSalary() throws Exception{
+		Map<String,Integer> map = new HashMap();
+		Connection con = DBConnector.getConnector();
+		String sql = "SELECT SUM(SALARY), COUNT(EMPLOYEE_ID) FROM EMPLOYEES";
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		
+		rs.next();
+		int sum = rs.getInt("SUM(SALARY)");
+		int count = rs.getInt(2);
+		map.put("count", count);
+		map.put("sum", sum);
+		DBConnector.disConnect(rs, ps, con);
+		return map;
+	}
 	
 	public EmployeeDTO getDetail(EmployeeDTO employeeDTO) throws Exception{
 		Connection con = DBConnector.getConnector();
@@ -60,5 +80,30 @@ public class EmployeeDAO {
 		}
 		
 		return arr;
+	}
+	
+	// 추가
+	public int add(EmployeeDTO edto) throws Exception{
+		Connection con = DBConnector.getConnector();
+		String sql = "INSERT INTO EMPLOYEES "
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, edto.getEmployee_id());
+		ps.setString(2, edto.getFirst_name());
+		ps.setString(3, edto.getLast_name());
+		ps.setString(4,edto.getEmail());
+		ps.setString(5,edto.getPhone_number());
+		ps.setDate(6, edto.getHire_date());
+		ps.setString(7, edto.getJob_id());
+		ps.setDouble(8, edto.getSalary());
+		ps.setDouble(9, edto.getCommission_pct());
+		ps.setInt(10, edto.getManager_id());
+		ps.setInt(11, edto.getDepartment_id());
+		
+		int result = ps.executeUpdate();
+		DBConnector.disConnect(ps, con);
+		
+		return result;
 	}
 }

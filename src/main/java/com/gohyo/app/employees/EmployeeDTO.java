@@ -1,6 +1,6 @@
 package com.gohyo.app.employees;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class EmployeeDTO {
 	private int employee_id;
@@ -10,8 +10,8 @@ public class EmployeeDTO {
 	private String phone_number;
 	private Date hire_date;
 	private String job_id;
-	private int salary;
-	private int commission_pct;
+	private double salary;
+	private double commission_pct;
 	private int manager_id;
 	private int department_id;
 	
@@ -58,16 +58,16 @@ public class EmployeeDTO {
 	public void setJob_id(String job_id) {
 		this.job_id = job_id;
 	}
-	public int getSalary() {
+	public double getSalary() {
 		return salary;
 	}
-	public void setSalary(int salary) {
+	public void setSalary(double salary) {
 		this.salary = salary;
 	}
-	public int getCommission_pct() {
+	public double getCommission_pct() {
 		return commission_pct;
 	}
-	public void setCommission_pct(int commission_pct) {
+	public void setCommission_pct(double commission_pct) {
 		this.commission_pct = commission_pct;
 	}
 	public int getManager_id() {

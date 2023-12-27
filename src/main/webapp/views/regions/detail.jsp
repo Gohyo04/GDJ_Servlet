@@ -23,6 +23,7 @@
 	<h3><%=regionDTO.getRegion_name()%></h3>
 	<input id="rId" type="hidden" value="<%= regionDTO.getRegion_id()%>">
 	<button id="btn">수정</button>
+	<button id="btn2">삭제</button>
 	
 	<script type="text/javascript">
 		let btn = document.getElementById('btn');

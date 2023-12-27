@@ -12,6 +12,8 @@
 	cdto.setCountry_id(s);
 	
 	cdto = cdao.getCountry(cdto);
+	System.out.println(cdto.getCountry_id());
+	System.out.println(cdto.getCountry_name());
 %>
 <html>
 <head>

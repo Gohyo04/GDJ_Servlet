@@ -9,10 +9,11 @@
 	CountryDAO cdao = new CountryDAO();
 	
 	ArrayList<CountryDTO> ar = cdao.getList();
+	System.out.println(ar.get(0).getCountry_id());
 %>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Countries List</title>
 </head>
 <body>
@@ -26,7 +27,7 @@
 			<%for(CountryDTO cdto : ar){%>
 			<tr>
 				<td><%=cdto.getCountry_id() %></td>
-				<td><a href="./detail.jsp?country_id="<%=cdto.getCountry_id() %>><%=cdto.getCountry_name() %></a></td>
+				<td><a href="./detail.jsp?country_id=<%=cdto.getCountry_id()%>"><%=cdto.getCountry_name() %></a></td>
 				<td><%=cdto.getRegion_id() %></td>
 			</tr>
 			<%} %>
