@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,34 +32,11 @@ public class FrontController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		RegionDAO regionDAO = new RegionDAO();
-		try {
-			List<RegionDTO> ar = regionDAO.getList();
-			PrintWriter out = response.getWriter();
-			out.print("<h1>MyHome</h1>");
-
-			out.println("<table>");
-			for(RegionDTO regionDTO : ar) {
-				out.println("<tr>");
-				out.println("<td>");
-				out.println(regionDTO.getRegion_id());
-				out.println("</td>");
-				out.println("<td>");
-				out.println(regionDTO.getRegion_name());
-				out.println("</td>");
-				out.println("</tr>");
-			}
-			out.println("</table>");
-			
-			out.close();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
+		
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/index.jsp");
+		view.forward(request, response);
 		
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
