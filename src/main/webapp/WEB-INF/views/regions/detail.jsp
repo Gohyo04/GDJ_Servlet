@@ -28,7 +28,7 @@
 	<h3>${requestScope.dto.region_id}</h3>
 	<h3>${requestScope.dto.region_name}</h3>
 	<%-- <input id="rId" type="hidden" value="<%= regionDTO.getRegion_id()%>"> --%>
-	<input id="rId" type="hidden" value=${requestScope.dto.region_id} }">
+	<input id="rId" type="hidden" value=${requestScope.dto.region_id}">
 	<button id="btn">수정</button>
 	<button id="btn2">삭제</button>
 	

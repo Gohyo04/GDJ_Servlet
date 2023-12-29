@@ -29,7 +29,7 @@ ${requestScope.list}
 			</tr>
 		</thead>
 		<tbody>
-			<%for(RegionDTO regionDTO: ar){	// 표현식 %>
+			<%for(RegionDTO regionDTO: ar){ %> <!-- // 표현식 -->
 				<tr>
 					<td><%= regionDTO.getRegion_id() %></td>
 					<td><a href="./detail?region_id=<%=regionDTO.getRegion_id()%>"><%= regionDTO.getRegion_name() %></a></td>
