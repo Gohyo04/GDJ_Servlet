@@ -1,13 +1,18 @@
+<%@page import="java.util.List"%>
 <%@page import="com.gohyo.app.regions.RegionDTO"%>
-<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page import="com.gohyo.app.regions.RegionDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 	// java 구역 (스크립틀릿)
-	RegionDAO regionDAO = new RegionDAO();
-	ArrayList<RegionDTO> ar = regionDAO.getList();
+	/* RegionDAO regionDAO = new RegionDAO();
+	ArrayList<RegionDTO> ar = regionDAO.getList(); */
+	// request 변수명
+	//List<RegionDTO> ar = (List<RegionDTO>) request.getAttribute("list");
+	
 %>
+${requestScope.list} 
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,10 +29,10 @@
 			</tr>
 		</thead>
 		<tbody>
-			<%for(RegionDTO regionDTO: ar){	// 표현식 %>
+			<%for(RegionDTO regionDTO: ar){ %> <!-- // 표현식 -->
 				<tr>
 					<td><%= regionDTO.getRegion_id() %></td>
-					<td><a href="./detail.jsp?region_id=<%=regionDTO.getRegion_id()%>"><%= regionDTO.getRegion_name() %></a></td>
+					<td><a href="./detail?region_id=<%=regionDTO.getRegion_id()%>"><%= regionDTO.getRegion_name() %></a></td>
 				<tr>
 			<%}%>
 		</tbody>
