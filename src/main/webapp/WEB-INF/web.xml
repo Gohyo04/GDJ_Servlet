@@ -12,7 +12,7 @@
 	<servlet-mapping>
 		<servlet-name>fc</servlet-name>
 		<!-- /* 모든주소 -->
-		<url-pattern>/index.do</url-pattern>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
 </web-app>
