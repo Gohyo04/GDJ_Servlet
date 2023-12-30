@@ -9,7 +9,7 @@
 	/* RegionDAO regionDAO = new RegionDAO();
 	ArrayList<RegionDTO> ar = regionDAO.getList(); */
 	// request 변수명
-	//List<RegionDTO> ar = (List<RegionDTO>) request.getAttribute("list");
+	List<RegionDTO> ar = (List<RegionDTO>) request.getAttribute("list");
 	
 %>
 ${requestScope.list} 
