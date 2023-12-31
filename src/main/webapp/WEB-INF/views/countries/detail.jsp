@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <%
 	//java
-	CountryDAO cdao = new CountryDAO();
+	/* CountryDAO cdao = new CountryDAO();
 	CountryDTO cdto = new CountryDTO();	
 
 	String s = request.getParameter("COUNTRY_ID");
@@ -13,7 +13,7 @@
 	
 	cdto = cdao.getCountry(cdto);
 	System.out.println(cdto.getCountry_id());
-	System.out.println(cdto.getCountry_name());
+	System.out.println(cdto.getCountry_name()); */
 %>
 <html>
 <head>
@@ -22,8 +22,8 @@
 </head>
 <body>
 	<h1>Country Detail</h1>
-	<h3><%=cdto.getCountry_id() %></h3>
-	<h3><%=cdto.getCountry_name() %></h3>
-	<h3><%=cdto.getRegion_id() %></h3>
+	<h3>$requestScope.dto.country_id></h3>
+	<h3>$requestScope.dto.country_name</h3>
+	<h3>$requestScope.dto.region_id</h3>
 </body>
 </html>

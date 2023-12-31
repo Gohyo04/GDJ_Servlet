@@ -10,9 +10,7 @@
 	ArrayList<RegionDTO> ar = regionDAO.getList(); */
 	// request 변수명
 	List<RegionDTO> ar = (List<RegionDTO>) request.getAttribute("list");
-	
 %>
-${requestScope.list} 
 <!DOCTYPE html>
 <html>
 <head>
