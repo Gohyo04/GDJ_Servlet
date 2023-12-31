@@ -26,6 +26,7 @@ public class RegionDAO {
 			rdto.setRegion_id(rs.getInt("REGION_ID"));
 			rdto.setRegion_name(rs.getString("REGION_NAME"));
 		}
+		DBConnector.disConnect(ps, con);
 		return rdto;
 	}
 	

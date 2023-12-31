@@ -6,7 +6,9 @@
 <% 
 	// java
 	DepartmentDAO ddao = new DepartmentDAO();
-	ArrayList<DepartmentDTO> ar = ddao.getList(); 
+	ArrayList<DepartmentDTO> ar = ddao.getList();
+	
+	//List<DepartmentDTO> ar = (List<DepartmentDTO>) request.getAttribute("list");
 %>
 <!DOCTYPE html>
 <html>

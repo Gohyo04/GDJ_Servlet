@@ -1,6 +1,5 @@
 <%@page import="java.util.List"%>
 <%@page import="com.gohyo.app.regions.RegionDTO"%>
-<%@page import="java.util.List"%>
 <%@page import="com.gohyo.app.regions.RegionDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

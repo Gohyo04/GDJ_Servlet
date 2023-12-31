@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.gohyo.app.countries.CountryDAO;
-import com.gohyo.app.countries.CountryDTO;
+import com.gohyo.app.departments.DepartmentDAO;
+import com.gohyo.app.departments.DepartmentDTO;
 import com.gohyo.app.regions.RegionDAO;
 import com.gohyo.app.regions.RegionDTO;
 
@@ -80,19 +81,19 @@ public class FrontController extends HttpServlet {
 					v = "/WEB-INF/views/regions/detail.jsp";
 					request.setAttribute("dto", rdto);
 				}
-			}else if(names[1].equals("countries")){
+			}else if(names[1].equals("departments")){
 				// countryDAO 사용
-				CountryDAO cdao = new CountryDAO();
+				DepartmentDAO ddao = new DepartmentDAO();
 				if(names[2].equals("list")) {
-					cdao.getList();
-					v = "/WEB-INF/views/countries/list.jsp";
+					ddao.getList();
+					v = "/WEB-INF/views/departments/list.jsp";
 				}else if(names[2].equals("detail")) {
-					String id = request.getParameter("country_id");
-					CountryDTO cdto = new CountryDTO();
-					cdto.setCountry_id(id);
-					cdto = cdao.getCountry(cdto);
-					v = "/WEB-INF/views/countries/detail.jsp";
-					request.setAttribute("dto", cdto);
+					String id = request.getParameter("department_id");
+					DepartmentDTO ddto = new DepartmentDTO();
+					ddto.setDepartment_id(Integer.parseInt(id));
+					ddto = ddao.getDetail(ddto);
+					v = "/WEB-INF/views/departments/detail.jsp";
+					request.setAttribute("dto", ddto);
 				}
 			}
 		}catch(Exception e) {
